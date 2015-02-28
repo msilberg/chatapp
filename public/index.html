@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Chatter App</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/>
+</head>
+<body>
+    <div id="content">
+        <div id="room"></div>
+        <div id="room-list"></div>
+        <div id="messages"></div>
+        <form action="index.html" id="send-form">
+            <input type="text" id="send-message"/>
+            <input type="submit" id="send-button" value="Send"/>
+            <div id="help">
+                <span>Chat commands:</span>
+                <ul>
+                    <li>Change nickname: <code>/nick [username]</code></li>
+                    <li>Join/create Room: <code>/join [room name]</code></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<script src="../node_modules/socket.io/lib/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="javascripts/chat.js"></script>
+<script src="javascripts/chat_ui.js"></script>
