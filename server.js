@@ -6,11 +6,11 @@
 //    }
 //).listen(3000);
 
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
-var mime = require('mime');
-var cache = {};
+var http = require('http'),
+    fs = require('fs'),
+    path = require('path'),
+    mime = require('mime'),
+    cache = {};
 
 function send404(response) {
     response.writeHead(404, {'Content-Type': 'text/plain'});
@@ -21,7 +21,7 @@ function send404(response) {
 function sendFile(response, filePath, fileContents) {
     response.writeHead(
         200,
-        {"content-type": mime.lookup(path.basename(filePath))}
+        {'content-type': mime.lookup(path.basename(filePath))}
     );
     response.end(fileContents);
 }
@@ -47,12 +47,17 @@ function serveStatic(response, cache, absPath) {
     }
 }
 
-var server = http.createServer(function(request, response){
-    var filePath = 'public' + ((request.url == '/')? '/index.html' : request.url),
-        absPath = './' + filePath;
-    serveStatic(response, cache, absPath);
-});
+var server = http.createServer(
+        function(request, response){
+            var filePath = 'public' + ((request.url == '/')? '/index.html' : request.url),
+                absPath = './' + filePath;
+            serveStatic(response, cache, absPath);
+        }
+    ),
+    chatServer = require('./lib/chat_server');
 
-server.listen(3000, function(){
+// Listeners
+server.listen(3000, function() {
     console.log('listening to port 3000');
 });
+chatServer.listen(server);
