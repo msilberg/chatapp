@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "chatrooms",
   "version": "0.0.1",
   "description": "My first Node.js App",
   "dependencies": {

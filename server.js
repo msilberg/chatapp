@@ -10,7 +10,10 @@ var http = require('http'),
     fs = require('fs'),
     path = require('path'),
     mime = require('mime'),
-    cache = {};
+    cache = {},
+    chatServer = require('./lib/chat_server');
+
+chatServer.listen(server);
 
 function send404(response) {
     response.writeHead(404, {'Content-Type': 'text/plain'});
